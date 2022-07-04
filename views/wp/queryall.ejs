@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .t1 {
+            width:50px;
+            float:left;
+            text-align:right;
+        }
+        .t11 {
+            width:100px;
+            float:left;
+            text-align:right;
+        }
+        .t22 {
+            width:150px;
+
+        }
+        .t2 {
+            width:0px;
+            float:left;
+            text-align:right;
+        }
+        .sub {
+            width: 450px;
+            margin: 20px;
+            text-align: center;
+        }
+        .bnt1 {
+            width:200px;
+            height:50px;
+            float:left;
+            text-align:center;
+        }
+        .div1 {
+            margin: 10px;
+
+        }
+        td {
+            text-align:center;
+        }
+        body {
+            background-repeat:no-repeat;
+            background-color: #ECF5FF;
+        }
+    </style>
+
+    <title>販劍小舖</title>
+</head>
+<body >
+
+    <div class="position-relative overflow-hidden p-3 p-md-1 m-md-0 text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-1">
+          <h1 class="display-4 font-weight-normal">販劍小舖</h1>
+          <p class="lead font-weight-normal">不只販劍，還有別的武器</p>
+          <a class="btn btn-outline-secondary" href="http://localhost:8181/weapon/buy/buyall">查看購物車</a>
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+      </div>
+  
+      <div class="div1">
+    <form id="queryOne_form"  method="get" onsubmit="queryOne()">
+        <label for="" class="t11">排序:</label>
+        <!-- <select name="empno" onchange="submit();"> -->
+        <select name="asc" >
+            <option value="">請選擇</option> 
+            <option value="powerasc">攻擊力由小排到大</option>
+            <option value="powerdesc">攻擊力由大排到小</option>
+            <option value="lastingasc">耐久度由小排到大</option>
+            <option value="lastingdesc">耐久度由大排到小</option>      +
+            <option value="priceasc">價格由小排到大</option>
+            <option value="pricedesc">價格由大排到小</option>          
+        </select>
+            <input type="submit" value="查詢排序結果" >
+
+        <Script>
+            function queryOne(){
+                var action_src = "http://localhost:8181/weapon/queryall/" + document.getElementsByName("asc")[0].value;
+                var your_form = document.getElementById('queryOne_form');
+                your_form.action = action_src ;
+            }
+        </Script>      
+    </form></p>
+
+    </div>
+    <div class="div1">
+        <form method="get" action="http://localhost:8181/weapon/queryall/search">
+        <label class="t11">關鍵字查詢:</label>
+        <input class="t22" type="text" name="search" > 
+        <input  type="submit" value="送出查詢" >
+    </form>
+        </div>
+
+
+
+
+    <table border ='1'>
+        <tr>
+            <th>武器圖<th>武器編號<th>武器名<th>耐久度<th>類型<th>材質<th>攻擊力<th>價格<th>數量<th>加入購物車</tr>
+            <% for(let i=0; i < wps.length; i++) {%>
+                    <tr>
+                        <td><img width=80 heigh=80 src=http://localhost:8181/img/<%= wps[i].wpid %>.webp  ></td>
+                        <td><%= wps[i].wpid %></td>
+                        <td><%= wps[i].wpname %></td>
+                        <td><%= wps[i].lasting %></td>
+                        <td><%= wps[i].type %></td>
+                        <td><%= wps[i].material %></td>
+                        <td><%= wps[i].power %></td>
+                        <td><%= wps[i].price %></td> 
+
+                        <form method="get" action="http://localhost:8181/weapon/buy/" target="nm_iframe">
+                        <td>
+                            <input class="t2" name="wpid" value="<%= wps[i].wpid %>" type="hidden">
+                            <input class="t1" type="number" min="0" name="number" >
+                        </td>   
+                        <td> 
+                        <div>  
+                        <button  id="click<%= wps[i].wpid %>" type="submit">加入購物車</button>
+                        <!-- <input type="submit" value="送出新增"  > -->
+                        </div>  
+                        </td>
+                        <script>
+                            $("#click<%= wps[i].wpid %>").click(function(){
+                                alert("已加入購物車");                          
+                            });
+                        </script>
+                        </form>   
+                        <iframe  name="nm_iframe" style="display:none;"></iframe>      
+                    </tr>
+
+            <% } %>
+                
+
+                </fieldset>
+    </table>
+                    <form method="get" action="http://localhost:8181/weapon/buy/buyall" >
+                <!-- <button  class="bnt1" type="button" >前往結帳</button> -->
+                <input type="submit" value="查看購物車" class="bnt1"  >
+                </form>
+
+</body>
+</html>

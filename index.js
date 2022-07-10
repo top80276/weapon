@@ -29,7 +29,8 @@ app.get('/', (req, res) => {
  
     // Sending the response
     res.send('<<a href="https://weapontop80276.herokuapp.com/weapon/queryall">https://weapontop80276.herokuapp.com/weapon/queryall</a>')
-    
+    disconnect_handler();
+
     // Ending the response
     res.end()
 })

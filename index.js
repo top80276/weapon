@@ -29,7 +29,6 @@ app.get('/', (req, res) => {
  
     // Sending the response
     res.send('<<a href="https://weapontop80276.herokuapp.com/weapon/queryall">https://weapontop80276.herokuapp.com/weapon/queryall</a>')
-    disconnect_handler();
 
     // Ending the response
     res.end()
@@ -48,7 +47,7 @@ var mysql_config = {
 function disconnect_handler() {
    let conn = mysql.createConnection(mysql_config);
     conn.connect(err => {
-        (err) && setTimeout('disconnect_handler()', 6000);
+        (err) && setTimeout('disconnect_handler()', 2000);
     });
 
     conn.on('error', err => {
@@ -61,5 +60,6 @@ function disconnect_handler() {
     });
     exports.conn = conn;
 }
+disconnect_handler();
 
 exports.disconnect_handler =  disconnect_handler;

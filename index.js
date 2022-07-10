@@ -43,6 +43,7 @@ var mysql_config = {
     database:'heroku_9059c434d2fdb58'
 };
 
+
 function disconnect_handler() {
    let conn = mysql.createConnection(mysql_config);
     conn.connect(err => {

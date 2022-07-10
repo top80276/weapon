@@ -28,7 +28,7 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
  
     // Sending the response
-    res.send(<a>https://weapontop80276.herokuapp.com/weapon/queryall</a>)
+    res.send('<a>https://weapontop80276.herokuapp.com/weapon/queryall</a>')
     
     // Ending the response
     res.end()

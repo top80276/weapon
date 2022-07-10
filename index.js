@@ -42,7 +42,6 @@ var pool = mysql.createPool({
     user:'bec73f25ef8ac3',
     password:'b3fc3ad6',
     database:'heroku_9059c434d2fdb58'
-    connectionLimit : 10, // 可以自己設定
 });
 
 var query = function(sql, options, callback) {

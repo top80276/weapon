@@ -35,39 +35,30 @@ app.get('/', (req, res) => {
 })
 
 
-
-var mysql = require("mysql");
-var pool = mysql.createPool({
+var mysql = require('mysql');
+var mysql_config = {
     host: 'us-cdbr-east-06.cleardb.net',
     user:'bec73f25ef8ac3',
     password:'b3fc3ad6',
     database:'heroku_9059c434d2fdb58'
-});
-
-var query = function(sql, options, callback) {
-    console.log(sql, options, callback);
-    if (typeof options === "function") {
-        callback = options;
-        options = undefined;
-    }
-    pool.getConnection(function(err, conn){
-        if (err) {
-            callback(err, null, null);
-        } else {
-            conn.query(sql, options, function(err, results, fields){
-                // callback
-                callback(err, results, fields);
-            });
-            // release connection。
-            // 要注意的是，connection 的釋放需要在此 release，而不能在 callback 中 release
-            conn.release();
-        }
-    });
 };
 
-module.exports = query;
 
-app.use(function (req, res, next) {
-    req.query = mysqlPoolQuery;
-    next();
-});
+function disconnect_handler() {
+   let conn = mysql.createConnection(mysql_config);
+    conn.connect(err => {
+        (err) && setTimeout('disconnect_handler()', 60000);
+    });
+
+    conn.on('error', err => {
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            // db error 重新連線
+            disconnect_handler();
+        } else {
+            throw err;
+        }
+    });
+    exports.conn = conn;
+}
+
+exports.disconnect_handler =  disconnect_handler;

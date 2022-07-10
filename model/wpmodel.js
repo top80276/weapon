@@ -40,10 +40,7 @@ var query = function(sql, options, callback) {
 
 module.exports = query;
 
-app.use(function (req, res, next) {
-    req.query = mysqlPoolQuery;
-    next();
-});
+
 
 
 

@@ -1,7 +1,13 @@
-
 const express = require('express');
 const app = express();
-app.listen(8181);
+// app.listen(8181);
+
+// Establishing the port
+const PORT = process.env.PORT ||8181;
+ 
+// Executing the server on given port number
+app.listen(PORT, console.log(
+  `Server started on port ${PORT}`));
 
 var wprouter = require('./router/wprouter');
 app.set('view engine','ejs');

@@ -1,9 +1,9 @@
 
 {
-  "name": "demoapp",
+  "name": "weapon",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "Student's Academic Interim Report for ispan",
+  "main": "index.js",
   "scripts": {
       "start": "node index.js",
       "dev": "nodemon index.js"

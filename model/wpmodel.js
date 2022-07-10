@@ -1,10 +1,10 @@
 var express = require('express');
 var mysql = require('mysql');
 var conn = mysql.createConnection({
-    host:'localhost',
-    user:'nodejs',
-    password:'Passw0rd0000',
-    database:'weapon'
+    host:'us-cdbr-east-06.cleardb.net',
+    user:'bec73f25ef8ac3',
+    password:'b3fc3ad6',
+    database:'heroku_9059c434d2fdb58'
 });
 
 

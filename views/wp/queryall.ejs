@@ -92,7 +92,7 @@
 
         <Script>
             function queryOne(){
-                var action_src = "http://localhost:8181/weapon/queryall/" + document.getElementsByName("asc")[0].value;
+                var action_src = "https://weapontop80276.herokuapp.com/weapon/queryall/" + document.getElementsByName("asc")[0].value;
                 var your_form = document.getElementById('queryOne_form');
                 your_form.action = action_src ;
             }
@@ -101,7 +101,7 @@
 
     </div>
     <div class="div1">
-        <form method="get" action="http://localhost:8181/weapon/queryall/search">
+        <form method="get" action="https://weapontop80276.herokuapp.com/weapon/queryall/search">
         <label class="t11">關鍵字查詢:</label>
         <input class="t22" type="text" name="search" > 
         <input  type="submit" value="送出查詢" >
@@ -125,7 +125,7 @@
                         <td><%= wps[i].power %></td>
                         <td><%= wps[i].price %></td> 
 
-                        <form method="get" action="http://localhost:8181/weapon/buy/" target="nm_iframe">
+                        <form method="get" action="https://weapontop80276.herokuapp.com/weapon/buy/" target="nm_iframe">
                         <td>
                             <input class="t2" name="wpid" value="<%= wps[i].wpid %>" type="hidden">
                             <input class="t1" type="number" min="0" name="number" >
@@ -150,7 +150,7 @@
 
                 </fieldset>
     </table>
-                    <form method="get" action="http://localhost:8181/weapon/buy/buyall" >
+                    <form method="get" action="https://weapontop80276.herokuapp.com/weapon/buy/buyall" >
                 <!-- <button  class="bnt1" type="button" >前往結帳</button> -->
                 <input type="submit" value="查看購物車" class="bnt1"  >
                 </form>

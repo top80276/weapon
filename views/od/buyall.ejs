@@ -58,7 +58,7 @@
         <div class="col-md-5 p-lg-5 mx-auto my-1">
           <h1 class="display-4 font-weight-normal">販劍小舖</h1>
           <p class="lead font-weight-normal">不只販劍，還有別的武器</p>
-          <a class="btn btn-outline-secondary" href="http://localhost:8181/weapon/queryall">返回上一頁採買更多東西</a>
+          <a class="btn btn-outline-secondary" href="https://weapontop80276.herokuapp.com/weapon/queryall">返回上一頁採買更多東西</a>
         </div>
         <div class="product-device shadow-sm d-none d-md-block"></div>
         <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -81,7 +81,7 @@
                         <td class="s_price"><%= wps[i].orderprice %></td>
 
 
-                        <form method="get" action="http://localhost:8181/weapon/buy/update" >
+                        <form method="get" action="https://weapontop80276.herokuapp.com/weapon/buy/update" >
                         <td>
                             <input class="t2" name="wpid" value="<%= wps[i].wpid %>" type="hidden">
                             <input class="t1" type="number" min="0" name="number" value="<%= wps[i].quantity %>" >
@@ -100,7 +100,7 @@
                         </script> -->
                         </form>   
      
-                        <form method="get" action="http://localhost:8181/weapon/buy/del">
+                        <form method="get" action="https://weapontop80276.herokuapp.com/weapon/buy/del">
                             <td>
                                 <input class="t2" name="wpid" value="<%= wps[i].wpid %>" type="hidden">
                             <div>  

@@ -13,7 +13,7 @@ var wprouter = require('./router/wprouter');
 app.set('view engine','ejs');
 app.use('/weapon',wprouter);
 app.use(express.static('public'));
-//localhost:8181/weapon/queryall 武器列表
+//https://weapontop80276.herokuapp.com/weapon/queryall 武器列表
 
 
 
@@ -22,4 +22,4 @@ app.set('view engine','ejs');
 app.use('/weapon',odrouter);
 app.use(express.static('public'));
 
-//localhost:8181/weapon/buy/2?number=4 增加到購物車
+//https://weapontop80276.herokuapp.com/weapon/buy/2?number=4 增加到購物車

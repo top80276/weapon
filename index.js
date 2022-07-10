@@ -47,7 +47,7 @@ var mysql_config = {
 function disconnect_handler() {
    let conn = mysql.createConnection(mysql_config);
     conn.connect(err => {
-        (err) && setTimeout('disconnect_handler()', 60000);
+        (err) && setTimeout('disconnect_handler()', 6000);
     });
 
     conn.on('error', err => {

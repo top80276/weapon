@@ -23,3 +23,13 @@ app.use('/weapon',odrouter);
 app.use(express.static('public'));
 
 //https://weapontop80276.herokuapp.com/weapon/buy/2?number=4 增加到購物車
+
+
+app.get('/', (req, res) => {
+ 
+    // Sending the response
+    res.send('https://weapontop80276.herokuapp.com/weapon/queryall')
+    
+    // Ending the response
+    res.end()
+})

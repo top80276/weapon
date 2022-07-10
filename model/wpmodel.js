@@ -1,39 +1,12 @@
-// var express = require('express');
-// var mysql = require('mysql');
-// var conn = mysql.createConnection({
-//     host:'us-cdbr-east-06.cleardb.net',
-//     user:'bec73f25ef8ac3',
-//     password:'b3fc3ad6',
-//     database:'heroku_9059c434d2fdb58'
-// });
-
-
+var express = require('express');
 var mysql = require('mysql');
-var mysql_config = {
-    host: 'us-cdbr-east-06.cleardb.net',
+var conn = mysql.createConnection({
+    host:'us-cdbr-east-06.cleardb.net',
     user:'bec73f25ef8ac3',
     password:'b3fc3ad6',
     database:'heroku_9059c434d2fdb58'
-};
+});
 
-function disconnect_handler() {
-   let conn = mysql.createConnection(mysql_config);
-    conn.connect(err => {
-        (err) && setTimeout('disconnect_handler()', 2000);
-    });
-
-    conn.on('error', err => {
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            // db error 重新連線
-            disconnect_handler();
-        } else {
-            throw err;
-        }
-    });
-    exports.conn = conn;
-}
-
-exports.disconnect_handler =  disconnect_handler;
 
 
 

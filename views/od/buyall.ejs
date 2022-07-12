@@ -103,15 +103,26 @@
                         <form method="get" action="https://weapontop80276.herokuapp.com/weapon/buy/del">
                             <td>
                                 <input class="t2" name="wpid" value="<%= wps[i].wpid %>" type="hidden">
-                            <div>  
-                            <button id="del<%= wps[i].wpid %>" type="submit">確認刪除</button>
-                            </div>  
-                            </td>
-                            <script>
-                                $("#del<%= wps[i].wpid %>").click(function(){
-                                    alert("已刪除此項");                          
-                                });
-                            </script>
+                                <div>  
+                                    <button id="del<%= wps[i].wpid %>" type="submit">取消訂單</button>
+                                    </div>  
+                                    </td>
+                                    <script>
+                                        // $("#del<%= wps[i].wpid %>").click(function(){
+                                        //     alert("已刪除此項");                          
+                                        // });
+        
+                                        document.getElementById("del<%= wps[i].wpid %>")
+                                        .addEventListener("click", function( e ){ //e => event
+                                        if( ! confirm("您確定是否移除此項物品?") ){
+                                        e.preventDefault(); // ! => don't want to do this
+                                        } else {
+                                         //want to do this! => maybe do something about it?
+                                        alert('Ok,已將此項目移除!');
+                                         $.get("https://weapontop80276.herokuapp.comweapon/buy/del");
+                                        };
+                            });
+                                    </script>
                             </form>     
                     </tr>
 

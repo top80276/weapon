@@ -35,6 +35,15 @@ app.get('/', (req, res) => {
 })
 
 
+app.get('/', (req, res) => {
+    res.sendFile('index.html');
+});
+
+
+
+
+
+
 var mysql = require('mysql');
 var mysql_config = {
     host: 'us-cdbr-east-06.cleardb.net',

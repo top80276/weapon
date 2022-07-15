@@ -3,7 +3,7 @@ const app = express();
 // app.listen(8181);
 
 // Establishing the port
-const PORT = process.env.PORT ||8181||5500;
+const PORT = process.env.PORT || 8181 || 8000 || 5000 || 5050 || 5500;
  
 // Executing the server on given port number
 app.listen(PORT, console.log(

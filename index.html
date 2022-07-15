@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表單主頁</title>
+    <style>
+        fieldset {
+            width: 500px;
+            border: 1px solid #acd6ff;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+        legend {
+            color: #006c6c;
+            /* text-align: center; */
+            margin-left: 200px;
+        }
+        .st1 {
+            width: 450px;
+            /* border-bottom: 3px dashed gray; */
+            margin: 20px;
+            padding-bottom: 10px;
+        }
+
+        .sub {
+            width: 450px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .t1 {
+            width: 200px;
+            float: left;
+            /* border: 1px solid red; */
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- <fieldset>
+        <legend><h2>查詢員工資料</h2></legend>
+        <div class="st1">
+        <form id="queryOne_form" method="post" action="http://localhost:8181/employee/queryOne">
+        <label class="t1">要查詢的員工編號 empno:</label><input type="text" name="empno" ><p>  
+        </div>
+        <div class="sub">
+        <input type="submit" value="送出查詢" >
+        <input type="reset" value="清除" >
+        </div>
+        </form>
+        </fieldset> -->
+
+
+    <fieldset>
+    <legend><h2>查詢員工資料</h2></legend>
+    <div class="st1">
+    <form id="queryOne_form" method="get" onsubmit="queryOne()">
+    <label class="t1">要查詢的員工編號 empno:</label><input type="text" name="empno" ><p>  
+    </div>
+    <div class="sub">
+    <input type="submit" value="送出查詢" >
+    <input type="reset" value="清除" >
+    </div>
+
+
+    <Script>
+        function queryOne(){
+            var action_src = "http://localhost:8181/employee/queryOne/" + document.getElementsByName("empno")[0].value;
+            var your_form = document.getElementById('queryOne_form');
+            your_form.action = action_src ;
+        }
+        </Script>
+    </form>
+    </fieldset>
+
+
+
+    <fieldset>
+    <legend><h2>查詢全部員工資料</h2></legend>
+    <div class="sub">
+    <form method="get" action="https://emptop80276.herokuapp.com/employee/queryall">
+    <input type="submit" value="查詢全部員工資料" >
+    </form>
+    </div> 
+    </fieldset>
+
+    <fieldset>
+        <legend><h2>新增員工資料</h2></legend>
+        <div class="st1">
+        <form method="post" action="http://localhost:8181/employee/insert"  >
+        <label class="t1">員工編號 empno:</label><input type="text" name="empno"><p>  
+        <label class="t1">姓名 ename:</label><input type="text" name="ename"><p>  
+        <label class="t1">到期日 hiredate:</label><input type="date" name="hiredate"><p>  
+        <label class="t1">薪資 salary:</label><input type="text" name="salary"><p>  
+        <label for="" class="t1">部門代號 deptno:</label>
+            <select name="deptno" >
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+            </select><p>  
+            <label for="" class="t1">職稱 title:</label>
+            <select name="title" >
+                <option value="engineer">engineer</option>
+                <option value="senior engineer">senior engineer</option>
+                <option value="SA_REP">SA_REP</option>
+            </select><p>             
+        </div>
+        <div class="sub">
+        <input type="submit" value="送出新增" >
+        <input type="reset" value="清除" >
+        </div>
+        </form>
+        </fieldset>
+
+    <fieldset>
+            <legend><h2>刪除員工資料</h2></legend>
+            <div class="st1">
+            <form method="get" action="http://localhost:8181/employee/delete" >
+            <!-- <form method="get" action="http://localhost:8181/employee/delete" target="nm_iframe"> -->
+            <label class="t1">要刪除的員工編號 empno:</label><input type="text" name="empno"><p>  
+            </div>
+            <div class="sub">
+            <input type="submit" value="送出刪除" >
+            <input type="reset" value="清除" >
+            </div>
+            </form>
+            <!-- <iframe  name="nm_iframe" style="display:none;"></iframe> -->
+        </fieldset>
+
+        <fieldset>
+                <legend><h2>修改員工資料</h2></legend>
+                <div class="st1">
+                <form method="get" action="http://localhost:8181/employee/update">
+                <label class="t1">要修改的員工編號 empno:</label><input type="text" name="empno" ><p>  
+                </div>
+                <div class="sub">
+                <input type="submit" value="調出清單修改" >
+                <input type="reset" value="清除" >
+                </div>
+                </form>
+            </fieldset>
+
+</body>
+</html>
